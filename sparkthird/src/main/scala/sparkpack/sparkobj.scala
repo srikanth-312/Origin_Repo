@@ -6,7 +6,9 @@ import sys.process._
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types._
-import scala.io.Source._                //scala import statement 
+import scala.io.Source._    
+import org.apache.spark.sql.functions.col
+//scala import statement 
 
 
 object sparkobj {
@@ -34,6 +36,8 @@ object sparkobj {
 					val df2 = spark.sql("select * from df where salary > 10000")
 					df2.show()
 					
+					val df3 = df2.filter(col("commission_pct").isNull)
+					df3.show()
 
 
 
