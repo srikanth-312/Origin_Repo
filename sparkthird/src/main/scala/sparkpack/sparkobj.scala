@@ -29,6 +29,11 @@ object sparkobj {
 
 					val df = spark.read.format("CSV").option("header","true").load("file:///C:/Users/DELL/OneDrive/Desktop/data/employee")
 					df.show()
+					
+					df.createOrReplaceTempView("df")
+					val df2 = spark.sql("select * from df where salary > 10000")
+					df2.show()
+					
 
 
 
